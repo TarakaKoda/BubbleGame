@@ -46,20 +46,25 @@ html, body {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    position: relative;
 }
 
 .container h2 {
     font-size: 15px;
 }
 
+.container .title {
+    font-size: 40px;
+}
+
 .container .box {
-    width: 10%;
+    width: 40px;
     color: rgb(3, 141, 95);
     font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50%;
+    height: 40px;
     background-color: #fff;
     border-radius: 8px;   
 }
