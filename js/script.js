@@ -1,9 +1,9 @@
-let timer = 60;
+let timer = 6;
 let score = 0;
 let hitNumber;
 
 function makeBubble() {
-    const numberOFBubbles = 179;
+    const numberOFBubbles = 500;
     let bubbles = ``;
     for (let i = 0; i <= numberOFBubbles; i++) {
         let randomNumber = Math.floor(Math.random() * 10);
@@ -61,7 +61,7 @@ function resetGame() {
             document.querySelector('.bubble-container').innerHTML = ``;
             score = 0;
             document.querySelector('.score').textContent = score;
-            timer = 60;
+            timer = 6;
             makeBubble();
             runTimer();
 
