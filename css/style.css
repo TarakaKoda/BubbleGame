@@ -82,10 +82,6 @@ html, body {
     align-items: center;
 }
 
-@media  screen and (min-width: 1024px) {
-    .panel-content
-}
-
 .bubble-container {
     display: flex;
     justify-content: center;
