@@ -1,16 +1,19 @@
-let timer = 6;
+let timer = 120;
 let score = 0;
 let hitNumber;
+let bubbleNumbers = []
 
 function makeBubble() {
-    const numberOFBubbles = 500;
+    const numberOFBubbles = 179;
     let bubbles = ``;
     for (let i = 0; i <= numberOFBubbles; i++) {
-        let randomNumber = Math.floor(Math.random() * 10);
+        let randomNumber = Math.floor(Math.random() * 100);
+        bubbleNumbers.push(randomNumber);
         bubbles += `<div class="bubble">${randomNumber}</div>`;
     }
     
     document.querySelector('.bubble-container').innerHTML = bubbles;
+    console.log(bubbleNumbers);
 }
 makeBubble();
 
@@ -38,15 +41,26 @@ function increaseScore() {
 }
 
 function hit() {
-    hitNumber = Math.floor(Math.random() * 10);
-    document.querySelector('.hit').textContent = hitNumber;
+
+    while (true) {
+        hitNumber = Math.floor(Math.random() * 100);
+        if (bubbleNumbers.indexOf(hitNumber) !== -1) {
+            document.querySelector('.hit').textContent = hitNumber;
+            break;
+        }
+        console.log(hitNumber);
+        console.log('Not hit');
+    }
 }
+
 hit();
+
 
 function blastBubble() {
     let bubbleContainer = document.querySelector('.panel-content');
     bubbleContainer.addEventListener('click', (details) => {
         if (Number(details.target.textContent) === hitNumber) {
+            bubbleNumbers = [];
             increaseScore();
             makeBubble();
             hit();
@@ -60,8 +74,10 @@ function resetGame() {
         if (event.target.classList.contains('reset-btn')) {
             document.querySelector('.bubble-container').innerHTML = ``;
             score = 0;
+            bubbleNumbers = [];
             document.querySelector('.score').textContent = score;
-            timer = 6;
+            timer = 120;
+            hit();
             makeBubble();
             runTimer();
 
@@ -70,3 +86,13 @@ function resetGame() {
 }
 
 resetGame();
+
+function resetBubbles() {
+    let resetBubble = document.querySelector('.reset-bubbles');
+    resetBubble.addEventListener('click', () => {
+        bubbleNumbers = [];
+        makeBubble();
+    });
+}
+
+resetBubbles();
