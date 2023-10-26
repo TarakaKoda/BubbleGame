@@ -1,4 +1,4 @@
-let timer = 40;
+let timer = 120;
 let score = 0;
 let hitNumber;
 let bubbleNumbers = []
@@ -70,7 +70,7 @@ function resetGame() {
             score = 0;
             bubbleNumbers = [];
             document.querySelector('.score').textContent = score;
-            timer = 4;
+            timer = 120;
             makeBubble();
             hit();
             runTimer();
