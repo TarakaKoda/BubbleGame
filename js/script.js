@@ -1,4 +1,4 @@
-let timer = 120;
+let timer = 40;
 let score = 0;
 let hitNumber;
 let bubbleNumbers = []
@@ -13,7 +13,6 @@ function makeBubble() {
     }
     
     document.querySelector('.bubble-container').innerHTML = bubbles;
-    console.log(bubbleNumbers);
 }
 makeBubble();
 
@@ -41,19 +40,14 @@ function increaseScore() {
 }
 
 function hit() {
-
-    while (true) {
-        hitNumber = Math.floor(Math.random() * 100);
-        if (bubbleNumbers.indexOf(hitNumber) !== -1) {
-            document.querySelector('.hit').textContent = hitNumber;
-            break;
-        }
-        console.log(hitNumber);
-        console.log('Not hit');
+    hitNumber = Math.floor(Math.random() * 100);
+    if (bubbleNumbers.indexOf(hitNumber) !== -1) {
+        document.querySelector('.hit').textContent = hitNumber;
+        return;
     }
+    hit();
 }
-
-hit();
+hit(); 
 
 
 function blastBubble() {
@@ -76,9 +70,9 @@ function resetGame() {
             score = 0;
             bubbleNumbers = [];
             document.querySelector('.score').textContent = score;
-            timer = 120;
-            hit();
+            timer = 4;
             makeBubble();
+            hit();
             runTimer();
 
         }
